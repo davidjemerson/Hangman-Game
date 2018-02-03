@@ -1,0 +1,9 @@
+#wordBox {
+	letter-spacing: 5px;
+}
+
+body {
+	background-image: url("../images/star-tile-far-away.jpg");
+	background-color: #000;
+	color: #feda4a;
+}
