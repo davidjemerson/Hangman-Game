@@ -5,10 +5,12 @@ newGame();
 function newGame() {
 	var currentWord = getWord(words);
 	var displayWord = makeBlanks(currentWord);
+	var winCounter = 0;
 	var guessTracker = [];
 	document.getElementById("lettersGuessed").innerHTML = "";
 	document.getElementById("goAgain").innerHTML = "";
 	document.getElementById("wordBox").innerHTML = displayWord;
+	document.getElementById("winBox").innerHTML = winCounter;
 	var turnsRemain = 10;
 	document.getElementById("turnsRemaining").innerHTML = turnsRemain;
 
@@ -40,6 +42,7 @@ function newGame() {
 			}
 		
 			if (guessChecker === currentWord) {
+				winCounter++;
 				document.getElementById("messageBoard").innerHTML = "The Force was with you. Well done!";
 				document.getElementById("goAgain").innerHTML = "Press any key to play again.";
 				document.onkeyup = function() {
