@@ -1,11 +1,11 @@
 var words = ["Darth Vader", "Luke Skywalker", "Han Solo", "Chewbacca", "Leia Organa", "Lando Calrissian", "Millennium Falcon"];
+var winCounter = 0;
 
 newGame();
 
 function newGame() {
 	var currentWord = getWord(words);
 	var displayWord = makeBlanks(currentWord);
-	var winCounter = 0;
 	var guessTracker = [];
 	document.getElementById("lettersGuessed").innerHTML = "";
 	document.getElementById("goAgain").innerHTML = "";
