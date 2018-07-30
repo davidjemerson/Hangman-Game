@@ -1,10 +1,16 @@
 var words = ["Darth Vader", "Luke Skywalker", "Han Solo", "Chewbacca", "Leia Organa", "Lando Calrissian", "Millennium Falcon"];
 var winCounter = 0;
+var wordIndex;
 
 newGame();
 
 function newGame() {
-	var currentWord = getWord(words);
+	if (words.length > 0) {
+		var currentWord = getWord(words);
+	}
+	else {
+		var currentWord = "You Guessed Them All"
+	}
 	var displayWord = makeBlanks(currentWord);
 	var guessTracker = [];
 	document.getElementById("lettersGuessed").innerHTML = "";
@@ -42,6 +48,7 @@ function newGame() {
 			}
 		
 			if (guessChecker === currentWord) {
+				words.splice(wordIndex, 1);
 				winCounter++;
 				document.getElementById("messageBoard").innerHTML = "The Force was with you. Well done!";
 				document.getElementById("goAgain").innerHTML = "Press any key to play again.";
@@ -64,13 +71,19 @@ function newGame() {
 }
 
 function getWord() {
-	return words[Math.floor(Math.random() * words.length)];
+	wordIndex = Math.floor (Math.random() * words.length);
+	return words[wordIndex];
 }
 
 function makeBlanks(newAnswer) {
 	var blankSet = "";
 	for (i = 0 ; i < newAnswer.length ; i++) {
-		blankSet = blankSet + "_";
+		if (newAnswer.charAt(i) === " ") {
+			blankSet = blankSet + " ";
+		}
+		else {
+			blankSet = blankSet + "_";
+		}
 	}
 	return blankSet;
 }
